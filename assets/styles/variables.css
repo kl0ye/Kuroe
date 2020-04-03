@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
+:root {
+	font-size:  10px;
+    font-family: Arial;
+    --blue-light: #D5EAF7;
+	--blue-grey: #BFD2DE;
+	--dark-bluegrey: #A9BAC4;
+	--font-grey: #666666;
+	--bg-grey: #F0F0F0;
+	--bg-white: #FCFCFC;
+	--bg-footer: #A3A3A3;
+	--font-footer: #141414;
+    --social-footer: #8C8C8C;
+    --kuroe-dark-blue: #044088;
+	--kuroe-light-blue: #A4BEDB;
+	--vignette-blue: #D8E3EB;
+	--vignette-blue-light: #E1F1FB;
+}
+body {
+	font-size: 1.3rem;
+}

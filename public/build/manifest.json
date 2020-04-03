@@ -1,0 +1,8 @@
+{
+  "build/app.css": "http://localhost:8080/build/app.css",
+  "build/app.js": "http://localhost:8080/build/app.js",
+  "build/vendors~app.js": "http://localhost:8080/build/vendors~app.js",
+  "build/images/KuroeLogo.png": "http://localhost:8080/build/images/KuroeLogo.34cc3451.png",
+  "build/images/bg1.jpg": "http://localhost:8080/build/images/bg1.fb837808.jpg",
+  "build/images/paint.jpg": "http://localhost:8080/build/images/paint.210a8038.jpg"
+}
