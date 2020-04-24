@@ -18,6 +18,7 @@
         {{ price }}€/m²
       </p>
     </div>
+    <slot name="footer" />
   </div>
 </template>
 
@@ -50,7 +51,7 @@ export default {
   background-color: var(--vignette-blue);
   border-radius: 0.5rem;
   padding: 2.5rem 2rem;
-  margin: 2rem 0;
+  margin: 2rem;
   &__img {
     width: 31rem;
     height: 20em;

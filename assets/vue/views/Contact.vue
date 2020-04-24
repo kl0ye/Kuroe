@@ -1,5 +1,5 @@
 <template>
-  <div class="contact ">
+  <div class="contact">
     <h2 class="contact__title">
       Nous contacter
     </h2>
@@ -158,24 +158,26 @@ export default {
     return { 
       isDisabled: true,
       model: {
-        nom: null,
-        prenom: null,
-        phone: null,
-        email: null,
-        adresse: null,
-        adresse2: null,
-        batiment: null,
-        etage: null,
-        ville: null,
-        postal: null,
-        message: null
+        nom: '',
+        prenom: '',
+        phone: '',
+        email: '',
+        adresse: '',
+        adresse2: '',
+        etage: '',
+        batiment: '',
+        ville: '',
+        postal: '',
+        message: ''
       }
     }
   },
   methods: {
     async sendForm (e) {
+      console.log(this.model)
       e.preventDefault()
-      await formulaireContact(this.model)
+      let contact = await formulaireContact(this.model)
+      console.log('contact', contact)
     }
   }
 };

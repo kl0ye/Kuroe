@@ -1,5 +1,12 @@
 <template>
   <div class="home">
+    <loading
+      loader="dots"
+      :active="isLoading"
+      :color="color"
+      :height="size"
+      :width="size"
+    />
     <div class="home__header">
       <img
         :src="require('../../img/bg1.jpg')"
@@ -22,36 +29,21 @@
       </h2>
     </div>
     <div class="home__services-vignettes">
-      <a
-        href="#myCarousel"
-        role="button"
-        data-slide="prev"
+      <carousel
+        :loop="true"
+        :per-page-custom="items"
       >
-        <span
-          aria-hidden="true"
-        />
-        <span class="sr-only">Previous</span>
-      </a>
-      <div
-        v-for="service in services"
-        :key="service.id"
-      >
-        <Vignettes
-          :name="service.title"
-          :description="service.description"
-          :price="service.price"
-        />
-      </div>
-      <a
-        href="#myCarousel"
-        role="button"
-        data-slide="next"
-      >
-        <span
-          aria-hidden="true"
-        />
-        <span class="sr-only">Next</span>
-      </a>
+        <slide 
+          v-for="service in services"
+          :key="service.id"
+        >
+          <Vignettes
+            :name="service.title"
+            :description="service.description"
+            :price="service.price"
+          />
+        </slide>
+      </carousel>
     </div>
     <div class="home__about-us">
       <h2 class="home__title">
@@ -64,17 +56,29 @@
 <script>
 
 import Vignettes from '../components/Vignettes.vue'
+import { Carousel, Slide } from 'vue-carousel';
 import { getAllServices } from '../services/api'
-
+import Loading from "vue-loading-overlay";
+import 'vue-loading-overlay/dist/vue-loading.css';
 
 export default {
   name: "Home",
   components: {
-    Vignettes
+    Vignettes,
+    Carousel,
+    Slide,
+    Loading
   },
   data () {
     return {
-      services: []
+      services: [],
+      items: [
+        [0, 3],
+        [1570, 4]
+      ],
+      isLoading: true,
+      color: '#044088',
+      size: 105
     }
   },
   async created () {
@@ -82,6 +86,7 @@ export default {
       const res = await getAllServices()
       if (res) {
         this.services = res.data
+        this.isLoading = false
       }
     } catch (e) {
       console.error(e)
@@ -91,6 +96,7 @@ export default {
 </script>
 <style lang="scss">
 @import "../../styles/variables.css";
+
 .home {
   &__title {
     font-size: 5rem;
@@ -118,12 +124,9 @@ export default {
       font-size: 2rem;
     }
   }
-  &__services {
-    &-vignettes {
-      display: flex;
-      justify-content: space-evenly;
-      flex-wrap: wrap;
-      margin: 5rem 2rem;
+  &__services-vignettes {
+    .VueCarousel-slide {
+      text-align: -webkit-center;
     }
   }
 }

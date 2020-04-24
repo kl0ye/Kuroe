@@ -30,7 +30,6 @@ class ServicesController extends AbstractController
         $newService = $serializer->deserialize($jsonRecu, Services::class, 'json');
         $manager->persist($newService);
         $manager->flush();
-
         return $this->json('Add New Services', 201, []);
     }
 }

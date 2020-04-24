@@ -7,85 +7,61 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Contact {
 
     /**
-     * @var string|null
      * @Assert\NotBlank()
      * @Assert\Length(min=2, max=50)
      */
     private $nom;
 
     /**
-     * @var string|null
      * @Assert\NotBlank()
      * @Assert\Length(min=2, max=50)
      */
     private $prenom;
 
     /**
-     * @var string|null
      * @Assert\NotBlank()
-     * @Assert\Regex(
-     *  pattern"/[0-9]{10}/"
-     * )
+     * Assert\Length(min=10, max=10)
      */
     private $phone;
 
     /**
-     * @var string|null
      * @Assert\NotBlank()
      * @Assert\Email()
      */
     private $email;
 
     /**
-     * @var string|null
      * @Assert\NotBlank()
      * @Assert\Length(min=2, max=50)
      */
     private $adresse;
 
     /**
-     * @var string|null
-     * @Assert\NotBlank()
      * @Assert\Length(min=2, max=50)
      */
     private $adresse2;
 
     /**
-     * @var string|null
-     * @Assert\NotBlank()
-     * @Assert\Regex(
-     *  pattern"/[0-9]{50}/"
-     * )
      */
     private $etage;
 
     /**
-     * @var string|null
-     * @Assert\NotBlank()
-     * @Assert\Regex(
-     *  pattern"/[0-9]{100}/"
-     * )
      */
     private $batiment;
 
     /**
-     * @var string|null
      * @Assert\NotBlank()
      * @Assert\Length(min=2, max=50)
      */
     private $ville;
 
     /**
-     * @var string|null
      * @Assert\NotBlank()
-     * @Assert\Regex(
-     *  pattern"/[0-9]{5}/"
-     * )
+     * @Assert\Length(max=5)
      */
     private $postal;
 
     /**
-     * @var string|null
      * @Assert\NotBlank()
      * @Assert\Length(min=10)
      */
