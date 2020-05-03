@@ -27,5 +27,6 @@ export default {
 @import "../styles/variables.css";
 .view-block {
   min-height: 50rem;
+  color: var(--font-grey);  
 }
 </style>

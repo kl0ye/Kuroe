@@ -32,37 +32,6 @@ class Contact {
 
     /**
      * @Assert\NotBlank()
-     * @Assert\Length(min=2, max=50)
-     */
-    private $adresse;
-
-    /**
-     * @Assert\Length(min=2, max=50)
-     */
-    private $adresse2;
-
-    /**
-     */
-    private $etage;
-
-    /**
-     */
-    private $batiment;
-
-    /**
-     * @Assert\NotBlank()
-     * @Assert\Length(min=2, max=50)
-     */
-    private $ville;
-
-    /**
-     * @Assert\NotBlank()
-     * @Assert\Length(max=5)
-     */
-    private $postal;
-
-    /**
-     * @Assert\NotBlank()
      * @Assert\Length(min=10)
      */
     private $message;
@@ -108,72 +77,6 @@ class Contact {
     public function setEmail(string $email): Contact
     {
         $this->email = $email;
-        return $this;
-    }
-
-    public function getAdresse(): ?string
-    {
-        return $this->adresse;
-    }
-
-    public function setAdresse(string $adresse): Contact
-    {
-        $this->adresse = $adresse;
-        return $this;
-    }
-
-    public function getAdresse2(): ?string
-    {
-        return $this->adresse2;
-    }
-
-    public function setAdresse2(string $adresse2): Contact
-    {
-        $this->adresse2 = $adresse2;
-        return $this;
-    }
-
-    public function getBatiment(): ?string
-    {
-        return $this->batiment;
-    }
-
-    public function setBatiment(string $batiment): Contact
-    {
-        $this->batiment = $batiment;
-        return $this;
-    }
-
-    public function getEtage(): ?string
-    {
-        return $this->etage;
-    }
-
-    public function setEtage(string $etage): Contact
-    {
-        $this->etage = $etage;
-        return $this;
-    }
-
-    public function getVille(): ?string
-    {
-        return $this->ville;
-    }
-
-    public function setVille(string $ville): Contact
-    {
-        $this->ville = $ville;
-        return $this;
-    }
-
-    public function getPostal(): ?string
-    {
-        return $this->postal;
-    }
-
-    public function setPostal(string $postal): Contact
-    {
-        $this->postal = $postal;
         return $this;
     }
 

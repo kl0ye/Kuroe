@@ -32,6 +32,8 @@
       <carousel
         :loop="true"
         :per-page-custom="items"
+        :pagination-color="dotColor"
+        :pagination-active="dotColorActive"
       >
         <slide 
           v-for="service in services"
@@ -49,6 +51,22 @@
       <h2 class="home__title">
         Qui sommes nous ?
       </h2>
+      <DescriptifEntreprise />
+    </div>
+    <div class="home__instagram">
+      <h2 class="home__title">
+        Quelques réalisations
+      </h2>
+      <!-- SnapWidget -->
+      <!-- SnapWidget -->
+      <iframe
+        src="https://snapwidget.com/embed/822326"
+        class="snapwidget-widget"
+        allowtransparency="true"
+        frameborder="0"
+        scrolling="no"
+        style="border:none; overflow:hidden;  width:100%; "
+      />
     </div>
   </div>
 </template>
@@ -56,6 +74,7 @@
 <script>
 
 import Vignettes from '../components/Vignettes.vue'
+import DescriptifEntreprise from '../components/DescriptifEntreprise.vue'
 import { Carousel, Slide } from 'vue-carousel';
 import { getAllServices } from '../services/api'
 import Loading from "vue-loading-overlay";
@@ -67,7 +86,8 @@ export default {
     Vignettes,
     Carousel,
     Slide,
-    Loading
+    Loading,
+    DescriptifEntreprise
   },
   data () {
     return {
@@ -78,7 +98,9 @@ export default {
       ],
       isLoading: true,
       color: '#044088',
-      size: 105
+      size: 105,
+      dotColorActive: '#666',
+      dotColor: '#f0f0f0'
     }
   },
   async created () {
@@ -102,7 +124,7 @@ export default {
     font-size: 5rem;
     font-family: 'Lobster';
     text-align: center;
-    margin: 2rem 0;    
+    margin: 2rem 0;
   }
   &__header {
     width: 100%;
@@ -128,6 +150,11 @@ export default {
     .VueCarousel-slide {
       text-align: -webkit-center;
     }
+  }
+  &__about-us {
+    background-color: var(--bg-grey);
+    padding-top: 1rem;
+    margin-top: 2rem;
   }
 }
 </style>

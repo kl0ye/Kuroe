@@ -1,5 +1,9 @@
 <template>
   <div class="contact">
+    <img
+      class="contact__bground"
+      :src="require('../../img/blue.jpg')"
+    >
     <h2 class="contact__title">
       Nous contacter
     </h2>
@@ -65,70 +69,6 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="adresse">Adresse</label>
-          <input
-            id="adresse"
-            v-model="model.adresse"
-            type="text"
-            class="form-control contact__form-input"
-            placeholder="Adresse"
-          >
-        </div>
-        <div class="form-group">
-          <label for="adresse2">Complément d'adresse</label>
-          <input
-            id="adresse2"
-            v-model="model.adresse2"
-            type="text"
-            class="form-control contact__form-input"
-            placeholder="Complément d'adresse"
-          >
-        </div>
-        <div class="form-row">
-          <div class="col-md-2 mb-3">
-            <label for="batiment">Bâtiment</label>
-            <input
-              id="batiment"
-              v-model="model.batiment"
-              type="text"
-              class="form-control contact__form-input"
-              placeholder="Batiment"
-            >
-          </div>
-          <div class="col-md-2 mb-3">
-            <label for="etage">Etage</label>
-            <input
-              id="etage"
-              v-model="model.etage"
-              type="text"
-              class="form-control contact__form-input"
-              placeholder="Etage"
-            >
-          </div>
-          <div class="col-md-5 mb-3">
-            <label for="ville">Ville</label>
-            <input
-              id="ville"
-              v-model="model.ville"
-              type="text"
-              class="form-control contact__form-input"
-              placeholder="Ville"
-              required
-            >
-          </div>
-          <div class="col-md-3 mb-3">
-            <label for="postal">Code postal</label>
-            <input
-              id="postal"
-              v-model="model.postal"
-              type="text"
-              class="form-control contact__form-input"
-              placeholder="Code postal"
-              required
-            >
-          </div>
-        </div>
-        <div class="form-group">
           <label for="message">Votre message</label>
           <textarea
             id="message"
@@ -158,17 +98,11 @@ export default {
     return { 
       isDisabled: true,
       model: {
-        nom: '',
-        prenom: '',
-        phone: '',
-        email: '',
-        adresse: '',
-        adresse2: '',
-        etage: '',
-        batiment: '',
-        ville: '',
-        postal: '',
-        message: ''
+        nom: null,
+        prenom: null,
+        phone: null,
+        email: null,
+        message: null
       }
     }
   },
@@ -191,7 +125,8 @@ export default {
     font-size: 5rem;
     font-family: 'Lobster';
     text-align: center;
-    margin: 2rem 0;    
+    margin: 2rem 0;
+    padding: 5rem 0 2rem;
   }
   &__form {
     display: flex;
@@ -201,7 +136,14 @@ export default {
     }
     &-btn {
       font-size: 1.5rem;
+      z-index: 1;
     }
+  }
+  &__bground {
+    opacity: .2;
+    position: absolute;
+    z-index: -1;
+    bottom: -8rem;
   }
 }
 </style>

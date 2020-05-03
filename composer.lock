@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a095b8a377176af617050ccb562d5a2c",
+    "content-hash": "16e539cd749846f336a9fc456c08334d",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -3402,16 +3402,16 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v5.0.4",
+            "version": "v5.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "2832d8cffc3a91df550ac42bcdce602f8c08be3e"
+                "reference": "26fb006a2c7b6cdd23d52157b05f8414ffa417b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/2832d8cffc3a91df550ac42bcdce602f8c08be3e",
-                "reference": "2832d8cffc3a91df550ac42bcdce602f8c08be3e",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/26fb006a2c7b6cdd23d52157b05f8414ffa417b6",
+                "reference": "26fb006a2c7b6cdd23d52157b05f8414ffa417b6",
                 "shasum": ""
             },
             "require": {
@@ -3453,7 +3453,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2020-01-31T09:13:47+00:00"
+            "time": "2020-03-30T14:14:32+00:00"
         },
         {
             "name": "symfony/http-kernel",
@@ -3686,16 +3686,16 @@
         },
         {
             "name": "symfony/mailer",
-            "version": "v5.0.6",
+            "version": "v5.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/mailer.git",
-                "reference": "cd70cc2c0778b2e86c5c32263ff89433f528e740"
+                "reference": "b473af272a4375d832d060b2bc9aac185536443d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mailer/zipball/cd70cc2c0778b2e86c5c32263ff89433f528e740",
-                "reference": "cd70cc2c0778b2e86c5c32263ff89433f528e740",
+                "url": "https://api.github.com/repos/symfony/mailer/zipball/b473af272a4375d832d060b2bc9aac185536443d",
+                "reference": "b473af272a4375d832d060b2bc9aac185536443d",
                 "shasum": ""
             },
             "require": {
@@ -3749,7 +3749,7 @@
             ],
             "description": "Symfony Mailer Component",
             "homepage": "https://symfony.com",
-            "time": "2020-03-16T12:10:54+00:00"
+            "time": "2020-04-28T17:58:55+00:00"
         },
         {
             "name": "symfony/mime",
@@ -4979,7 +4979,7 @@
         },
         {
             "name": "symfony/security-http",
-            "version": "v5.0.4",
+            "version": "v5.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security-http.git",
@@ -4993,7 +4993,7 @@
             },
             "require": {
                 "php": "^7.2.5",
-                "symfony/http-foundation": "^4.4|^5.0",
+                "symfony/http-foundation": "^4.4|^5.0.7",
                 "symfony/http-kernel": "^4.4|^5.0",
                 "symfony/property-access": "^4.4|^5.0",
                 "symfony/security-core": "^4.4|^5.0"
@@ -5628,16 +5628,16 @@
         },
         {
             "name": "symfony/twig-bundle",
-            "version": "v5.0.4",
+            "version": "v5.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/twig-bundle.git",
-                "reference": "1bd6192a7742d7807b9ecd0eff347ea549a19390"
+                "reference": "6167dbac6f32961b7d19112a7531602f511bf500"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/twig-bundle/zipball/1bd6192a7742d7807b9ecd0eff347ea549a19390",
-                "reference": "1bd6192a7742d7807b9ecd0eff347ea549a19390",
+                "url": "https://api.github.com/repos/symfony/twig-bundle/zipball/6167dbac6f32961b7d19112a7531602f511bf500",
+                "reference": "6167dbac6f32961b7d19112a7531602f511bf500",
                 "shasum": ""
             },
             "require": {
@@ -5699,7 +5699,7 @@
             ],
             "description": "Symfony TwigBundle",
             "homepage": "https://symfony.com",
-            "time": "2020-01-04T14:08:26+00:00"
+            "time": "2020-03-27T16:56:45+00:00"
         },
         {
             "name": "symfony/twig-pack",
@@ -6475,6 +6475,7 @@
                 "monolog",
                 "productivity"
             ],
+            "abandoned": true,
             "time": "2019-10-24T07:13:31+00:00"
         },
         {

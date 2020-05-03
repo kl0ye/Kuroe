@@ -68,6 +68,7 @@ export default {
   &__service {
     width: 60%;
     &-title {
+      font-family: 'Lobster';
       font-size: 3.5rem;
     }
     &-text {
@@ -75,6 +76,7 @@ export default {
     }
   }
   &__price {
+    font-family: 'Lobster';
     font-size: 3.5rem;
   }
 }

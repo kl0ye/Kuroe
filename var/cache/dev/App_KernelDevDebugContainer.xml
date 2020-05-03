@@ -2432,6 +2432,14 @@
         <argument>2048</argument>
       </call>
       <call method="addListener">
+        <argument>console.command</argument>
+        <argument type="collection">
+          <argument type="service" id="debug.debug_handlers_listener"/>
+          <argument>configure</argument>
+        </argument>
+        <argument>2048</argument>
+      </call>
+      <call method="addListener">
         <argument>kernel.request</argument>
         <argument type="collection">
           <argument type="service" id="router_listener"/>
@@ -5038,9 +5046,10 @@
         <argument>make:migration</argument>
       </call>
     </service>
-    <service id=".service_locator.jEs3tXt" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.Bub8QNE" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="mailer" type="service" id="mailer.mailer"/>
         <argument key="notification" type="service" id="App\Notification\ContactNotification"/>
         <argument key="serializer" type="service" id="serializer"/>
       </argument>
@@ -5065,14 +5074,14 @@
         <argument key="serializer" type="service" id="serializer"/>
       </argument>
     </service>
-    <service id=".service_locator.wR7Ju0N" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.OJMfXGP" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="App\Controller\ContactController::formulaireContact" type="service" id=".service_locator.jEs3tXt"/>
+        <argument key="App\Controller\ContactController::formulaireContact" type="service" id=".service_locator.Bub8QNE"/>
         <argument key="App\Controller\IndexController::indexAction" type="service" id=".service_locator.MjEGRpc"/>
         <argument key="App\Controller\ServicesController::getAllServices" type="service" id=".service_locator.mPLO5Jd"/>
         <argument key="App\Controller\ServicesController::newServices" type="service" id=".service_locator.uI40WUz"/>
-        <argument key="App\Controller\ContactController:formulaireContact" type="service" id=".service_locator.jEs3tXt"/>
+        <argument key="App\Controller\ContactController:formulaireContact" type="service" id=".service_locator.Bub8QNE"/>
         <argument key="App\Controller\IndexController:indexAction" type="service" id=".service_locator.MjEGRpc"/>
         <argument key="App\Controller\ServicesController:getAllServices" type="service" id=".service_locator.mPLO5Jd"/>
         <argument key="App\Controller\ServicesController:newServices" type="service" id=".service_locator.uI40WUz"/>
@@ -5516,12 +5525,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.wR7Ju0N"/>
+      <argument type="service" id=".service_locator.OJMfXGP"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.wR7Ju0N"/>
+      <argument type="service" id=".service_locator.OJMfXGP"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -5927,7 +5936,7 @@
     <service id="Swift_Transport" alias="swiftmailer.mailer.default.transport.spool" public="false"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.wR7Ju0N"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.OJMfXGP"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>
