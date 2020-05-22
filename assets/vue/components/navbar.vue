@@ -8,9 +8,9 @@
         to="/home"
       >
         <img
-          :src="require('../../img/KuroeLogo.png')"
+          :src="require('../../img/KuroeLogo.png').default"
           class="navbar__logo"
-          alt="" 
+          alt="logo" 
         >
       </router-link>
       <router-link
@@ -21,9 +21,9 @@
       </router-link>
       <router-link
         class="navbar__link"
-        to="/rendez-vous"
+        to="/realisations"
       >
-        Rendez-vous
+        Réalisations
       </router-link>
       <router-link
         class="navbar__link"

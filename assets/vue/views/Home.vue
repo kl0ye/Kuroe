@@ -9,7 +9,7 @@
     />
     <div class="home__header">
       <img
-        :src="require('../../img/bg1.jpg')"
+        :src="require('../../img/bg1.jpg').default"
         class="home__header-img"
         alt="" 
       >
@@ -37,12 +37,15 @@
       >
         <slide 
           v-for="service in services"
-          :key="service.id"
+          :key="service.title"
         >
           <Vignettes
+            :id="service.id"
             :name="service.title"
             :description="service.description"
             :price="service.price"
+            class="home__vignette-link"
+            :img-click="true"
           />
         </slide>
       </carousel>
@@ -57,28 +60,33 @@
       <h2 class="home__title">
         Quelques réalisations
       </h2>
-      <!-- SnapWidget -->
-      <!-- SnapWidget -->
-      <iframe
-        src="https://snapwidget.com/embed/822326"
-        class="snapwidget-widget"
-        allowtransparency="true"
-        frameborder="0"
-        scrolling="no"
-        style="border:none; overflow:hidden;  width:100%; "
-      />
+      <div class="home__instagram-feed">
+        <div 
+          v-for="photo in photosInsta"
+          :key="photo.name"
+        >
+          <Hexagone
+            class="home__hexagone"
+            :name="photo.name"
+            :url="photo.url"
+            :img-click="true"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 
-import Vignettes from '../components/Vignettes.vue'
-import DescriptifEntreprise from '../components/DescriptifEntreprise.vue'
+import Vignettes from '../components/Vignettes.vue';
+import Hexagone from '../components/Hexagone.vue';
+import DescriptifEntreprise from '../components/DescriptifEntreprise.vue';
 import { Carousel, Slide } from 'vue-carousel';
 import { getAllServices } from '../services/api'
 import Loading from "vue-loading-overlay";
 import 'vue-loading-overlay/dist/vue-loading.css';
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: "Home",
@@ -87,7 +95,9 @@ export default {
     Carousel,
     Slide,
     Loading,
-    DescriptifEntreprise
+    DescriptifEntreprise,
+    // InstaFrame,
+    Hexagone
   },
   data () {
     return {
@@ -100,19 +110,44 @@ export default {
       color: '#044088',
       size: 105,
       dotColorActive: '#666',
-      dotColor: '#f0f0f0'
+      dotColor: '#f0f0f0',
+      photosInsta: [
+        {name: 'IMG_01', url:'https://www.instagram.com/p/B_sM1kBHwkm/'},
+        {name: 'IMG_02', url:'https://www.instagram.com/p/B_sM3KIHv3u/'},
+        {name: 'IMG_03', url:'https://www.instagram.com/p/B_sM4iVnbto/'},
+        {name: 'IMG_04', url:'https://www.instagram.com/p/B_sM5SHnuCM/'},
+        {name: 'IMG_05', url:'https://www.instagram.com/p/B_sM8PXnXxR/'},
+        {name: 'IMG_06', url:'https://www.instagram.com/p/B_sM-5Snl2k/'}
+      ]
     }
   },
+  computed: {
+    ...mapGetters([
+      'getServices'
+    ])
+  },
   async created () {
-    try {
-      const res = await getAllServices()
-      if (res) {
-        this.services = res.data
-        this.isLoading = false
+    if (this.getServices) {
+      this.services = [...this.getServices]
+      this.isLoading = false
+    } else {
+      try {
+        const res = await getAllServices()
+        if (res) {
+          this.services = res.data
+          this.setServices(this.services)
+          this.isLoading = false
+        }
+      } catch (e) {
+        console.error(e)
       }
-    } catch (e) {
-      console.error(e)
     }
+    console.log('route', this.$route)
+  },
+  methods: {
+    ...mapActions([
+      'setServices'
+    ])
   }
 };
 </script>
@@ -153,8 +188,18 @@ export default {
   }
   &__about-us {
     background-color: var(--bg-grey);
-    padding-top: 1rem;
+    padding: 3rem 0;
     margin-top: 2rem;
+  }
+  &__instagram-feed {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    max-width: 119rem;
+    margin: 5rem auto;
+  }
+  .lightwidget--grid {
+    margin: 1rem 30rem;
   }
 }
 </style>

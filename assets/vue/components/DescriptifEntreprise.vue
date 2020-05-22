@@ -1,11 +1,11 @@
 <template>
-  <div class="raw descriptif">
+  <div class="row descriptif">
     <div class="descriptif__travaux col-6">
       <div class="col-2">
         <div class="descriptif__icon-container">
           <inline-svg
             class="descriptif__icon"
-            :src="require('../../img/svg/brush.svg')"
+            :src="require('../../img/svg/brush.svg').default"
             :width="size" 
             :height="size"
             color="white"
@@ -22,7 +22,7 @@
         <div class="descriptif__icon-container descriptif__icon-container--dark">
           <inline-svg
             class="descriptif__icon"
-            :src="require('../../img/svg/hammer.svg')"
+            :src="require('../../img/svg/hammer.svg').default"
             :width="size" 
             :height="size"
             color="white"
@@ -39,7 +39,7 @@
         <div class="descriptif__icon-container descriptif__icon-container--dark">
           <inline-svg
             class="descriptif__icon"
-            :src="require('../../img/svg/tools.svg')"
+            :src="require('../../img/svg/tools.svg').default"
             :width="size" 
             :height="size"
             color="white"
@@ -56,7 +56,7 @@
         <div class="descriptif__icon-container">
           <inline-svg
             class="descriptif__icon"
-            :src="require('../../img/svg/paint-roller.svg')"
+            :src="require('../../img/svg/paint-roller.svg').default"
             :width="size" 
             :height="size"
             color="white"
@@ -97,7 +97,7 @@ export default {
   &__icon-container {
     width: 7rem;
     height: 7rem;
-    background-color: var(--vignette-blue-light);
+    background-color: var(--blue-light);
     padding: 1rem;
     border-radius: 50%;
     display:flex;

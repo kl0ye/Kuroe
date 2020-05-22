@@ -13,9 +13,12 @@
     --social-footer: #8C8C8C;
     --kuroe-dark-blue: #044088;
 	--kuroe-light-blue: #A4BEDB;
+	/* --vignette-service: #F6F9FC; */
+	--vignette-service:	#EDF2F6;
+
 	--vignette-blue: #D8E3EB;
-	/* --vignette-blue-light: #E1F1FB; */
-	--vignette-blue-light: #D5EAF7;
+	/* --vignette-blue-light: #E1F1FB; #D5EAF7 */
+	--vignette-blue-light:  #E4F0F9;
 }
 body {
 	font-size: 1.3rem;
