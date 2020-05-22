@@ -4,7 +4,21 @@
       Nous contacter
     </h2>
 
-    <div class="row offset-3 col-6">
+    <div class="row">
+      <div
+        v-if="sendFormOk"
+        class="contact__alert offset-2 col-8 alert alert-success"
+        role="alert"
+      >
+        Votre demande de contact à été prise en compte. Vous receverez une reponse sous 24h.
+      </div>
+      <div
+        v-if="alertInvalid"
+        class="contact__alert offset-2 col-8 alert alert-danger"
+        role="alert"
+      >
+        Tous les champs du formulaire ne sont pas remplis.
+      </div>
       <form
         class="needs-validation offset-2 col-8 contact__form"
       >
@@ -56,76 +70,12 @@
               <input
                 id="email"
                 v-model="model.email"
-                type="text"
+                type="email"
                 class="form-control contact__form-input"
                 placeholder="Email"
                 required
               >
             </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="adresse">Adresse</label>
-          <input
-            id="adresse"
-            v-model="model.adresse"
-            type="text"
-            class="form-control contact__form-input"
-            placeholder="Adresse"
-          >
-        </div>
-        <div class="form-group">
-          <label for="adresse2">Complément d'adresse</label>
-          <input
-            id="adresse2"
-            v-model="model.adresse2"
-            type="text"
-            class="form-control contact__form-input"
-            placeholder="Complément d'adresse"
-          >
-        </div>
-        <div class="form-row">
-          <div class="col-md-2 mb-3">
-            <label for="batiment">Bâtiment</label>
-            <input
-              id="batiment"
-              v-model="model.batiment"
-              type="text"
-              class="form-control contact__form-input"
-              placeholder="Batiment"
-            >
-          </div>
-          <div class="col-md-2 mb-3">
-            <label for="etage">Etage</label>
-            <input
-              id="etage"
-              v-model="model.etage"
-              type="text"
-              class="form-control contact__form-input"
-              placeholder="Etage"
-            >
-          </div>
-          <div class="col-md-5 mb-3">
-            <label for="ville">Ville</label>
-            <input
-              id="ville"
-              v-model="model.ville"
-              type="text"
-              class="form-control contact__form-input"
-              placeholder="Ville"
-              required
-            >
-          </div>
-          <div class="col-md-3 mb-3">
-            <label for="postal">Code postal</label>
-            <input
-              id="postal"
-              v-model="model.postal"
-              type="text"
-              class="form-control contact__form-input"
-              placeholder="Code postal"
-              required
-            >
           </div>
         </div>
         <div class="form-group">
@@ -135,15 +85,16 @@
             v-model="model.message"
             class="form-control contact__form-input"
             rows="5"
+            required
           />
         </div>
-        <button
+        <div
           class="btn btn-secondary contact__form-btn"
-          :class="{ 'disabled' : isDisabled }"
+          :class="{ 'contact__form-btn-disabled' : !isValid }"
           @click="sendForm"
         >
           Envoyer
-        </button>
+        </div>
       </form>
     </div>
   </div>
@@ -151,33 +102,82 @@
 
 <script>
 import { formulaireContact } from '../services/api'
+import { required, minLength, numeric, email } from 'vuelidate/lib/validators'
 
 export default {
   name: "Contact",
   data () {
-    return { 
-      isDisabled: true,
+    return {
+      alertInvalid: false,
+      isValid: false,
       model: {
-        nom: '',
-        prenom: '',
-        phone: '',
-        email: '',
-        adresse: '',
-        adresse2: '',
-        etage: '',
-        batiment: '',
-        ville: '',
-        postal: '',
-        message: ''
-      }
+        nom: null,
+        prenom: null,
+        phone: null,
+        email: null,
+        message: null
+      },
+      sendFormOk: false
+    
+    }
+  },
+  computed: {
+    isValidForm () {
+      return (!this.$v.model.nom.$invalid && !this.$v.model.prenom.$invalid && !this.$v.model.phone.$invalid && !this.$v.model.email.$invalid && !this.$v.model.message.$invalid)
+    }
+  },
+  watch: {
+    isValidForm (value) {
+      if (this.alertInvalid) { this.alertInvalid = false }
+      this.isValid = value
     }
   },
   methods: {
-    async sendForm (e) {
-      console.log(this.model)
-      e.preventDefault()
-      let contact = await formulaireContact(this.model)
-      console.log('contact', contact)
+    clearForm () {
+      this.model = {
+        nom: null,
+        prenom: null,
+        phone: null,
+        email: null,
+        message: null
+      }
+    },
+    async sendForm () {
+      if (this.isValid) {
+        await formulaireContact(this.model)
+        this.clearForm()
+        this.sendFormOk = true
+      } else {
+        if (this.sendFormOk) { this.sendFormOk = false }
+        this.alertInvalid = true
+      }
+    }
+  },
+  validations() {
+    return {
+      model: {
+        nom: {
+          required,
+          minLength: minLength(2)
+        },
+        prenom: {
+          required,
+          minLength: minLength(2)
+        },
+        phone: {
+          required,
+          numeric,
+          minLength: minLength(10)
+        },
+        email: {
+          required,
+          email
+        },
+        message: {
+          required,
+          minLength: minLength(10)
+        }
+      }
     }
   }
 };
@@ -186,22 +186,55 @@ export default {
 <style lang="scss">
 @import "../../styles/variables.css";
 .contact {
-  margin: 5rem auto;
+  margin: 5rem 25%;
+  background-color: var(--vignette-blue-light);
   &__title {
     font-size: 5rem;
     font-family: 'Lobster';
     text-align: center;
-    margin: 2rem 0;    
+    margin: 2rem 0;
+    padding: 2rem 0;
+  }
+  &__alert {
+    padding: 2rem;
+    margin-bottom: 2rem;
+    margin-top: -2rem;
   }
   &__form {
     display: flex;
     flex-direction: column;
+    margin-bottom: 3rem;
     &-input {
       font-size: 1.2rem;
     }
     &-btn {
+      margin-top: 3rem;
       font-size: 1.5rem;
+      z-index: 1;
+      border-radius: 50rem;
+      border: 2px solid var(--font-grey);
+      color: #FFF;
+      font-weight: bold;
+      padding: 0.5rem 2rem;
+      background-color: var(--font-grey);
     }
+    &-btn:hover {
+      border: 2px solid var(--kuroe-dark-blue);
+      background-color: var(--kuroe-dark-blue);
+    }
+    &-btn-disabled {
+      cursor: not-allowed;
+    }
+    &-btn-disabled:hover {
+      cursor: not-allowed;
+      border: 2px solid var(--font-grey);
+      background-color: var(--font-grey);
+    }
+  }
+  &__bground {
+    opacity: .2;
+    position: absolute;
+    z-index: -1;
   }
 }
 </style>

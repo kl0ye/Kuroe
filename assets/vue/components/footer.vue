@@ -15,6 +15,6 @@ export default {
 @import "../../styles/variables.css";
 .footer {
     background-color: var(--bg-footer);
-    height: 10rem;
+    height: 30rem;
 }
 </style>

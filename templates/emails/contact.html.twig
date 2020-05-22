@@ -1,0 +1,15 @@
+
+<html>
+    <body style="font-family: Verdana; text-align: center">
+        <h1 style="background-color: #000; color: #fff; padding: 10px 0 15px">Vous avez reçu un message</h1>
+        <div style="font-size: 15px; background-color: #fff; color: #000; margin: 15px 0">
+            <p>Bonjour, <strong>{{ contact.prenom }} {{ contact.nom }}</strong> vous a envoyé le message suivant :</p>
+            <p style="display: flex; justify-content: center; align-items: center; min-height: 100px; background-color: #f5f5f5; margin: 25px">{{ contact.message }}</p>
+            <hr>
+        </div>
+        <p>
+            Vous pouvez recontacter {{ contact.prenom }} au <strong>{{ contact.phone }}</strong> 
+            ou par mail à l'adresse <strong>{{ contact.email }}</strong>
+        </p>
+    </body>
+</html>
