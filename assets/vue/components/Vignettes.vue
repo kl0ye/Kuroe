@@ -1,9 +1,11 @@
 <template>
   <div class="vignette">
     <img
-      :src="require('../../img/paint.jpg')"
+      :src="require(`../../img/${name}.jpg`).default"
       class="vignette__img"
-      alt="" 
+      :class="{ 'vignette__cursor' : imgClick }"
+      alt=""
+      @click="goTo(id)"
     >
     <div class="vignette__details">
       <div class="vignette__service">
@@ -27,6 +29,10 @@
 export default {
   name: "Vignettes",
   props: {
+    id: {
+      type: Number,
+      default: null
+    },
     name: {
       type: String,
       default: ''
@@ -38,6 +44,17 @@ export default {
     price: {
       type: Number,
       default: null
+    },
+    imgClick: {
+      type: Boolean,
+      default: false
+    }
+  },
+  methods: {   
+    goTo (route) {
+      if (this.imgClick) {
+        this.$router.push({path: '/services/mono-service', query: {id: route}})
+      }
     }
   }
 };
@@ -56,8 +73,11 @@ export default {
     width: 31rem;
     height: 20em;
     text-align: center;
-    border-radius: 0.5rem;
+    border-radius: 0.2rem;
     filter: grayscale(1);
+  }
+  &__cursor {
+    cursor: pointer;
   }
   &__details {
     display: flex;
@@ -68,6 +88,7 @@ export default {
   &__service {
     width: 60%;
     &-title {
+      font-family: 'Lobster';
       font-size: 3.5rem;
     }
     &-text {
@@ -75,6 +96,7 @@ export default {
     }
   }
   &__price {
+    font-family: 'Lobster';
     font-size: 3.5rem;
   }
 }

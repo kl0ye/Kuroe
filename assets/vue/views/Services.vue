@@ -12,22 +12,29 @@
     </h1>
 
     <div>
-      <p>Tout nos services</p>
+      <p class="services__subtitle">
+        Retrouvez ci-dessous la liste de tout nos services
+      </p>
     </div>
     <template
       v-for="service in services"
     >
       <Vignettes
-        :key="service.id"
+        :id="service.id"
+        :key="service.title"
         :name="service.title"
         :description="service.description"
         :price="service.price"
+        class="services__vignettes"
       >
         <div 
           slot="footer"
           class="vignette__slot"
         >
-          <button class="vignette__button">
+          <button
+            class="vignette__button"
+            @click="goTo(service.id)"
+          >
             Plus d'info
           </button>
         </div>
@@ -41,6 +48,7 @@ import Vignettes from '../components/Vignettes.vue'
 import { getAllServices } from '../services/api'
 import Loading from "vue-loading-overlay";
 import 'vue-loading-overlay/dist/vue-loading.css';
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: "Services",
@@ -56,15 +64,34 @@ export default {
       size: 105
     }
   },
+  computed: {
+    ...mapGetters([
+      'getServices'
+    ])
+  },
   async created () {
-    try {
-      const res = await getAllServices()
-      if (res) {
-        this.services = res.data
-        this.isLoading = false
+    if (this.getServices) {
+      this.services = [...this.getServices]
+      this.isLoading = false
+    } else {
+      try {
+        const res = await getAllServices()
+        if (res) {
+          this.services = res.data
+          this.setServices(this.services)
+          this.isLoading = false
+        }
+      } catch (e) {
+        console.error(e)
       }
-    } catch (e) {
-      console.error(e)
+    }
+  },
+  methods: {
+    ...mapActions([
+      'setServices'
+    ]),
+    goTo (route) {
+      this.$router.push({path: '/services/mono-service', query: {id: route}})
     }
   }
 };
@@ -79,6 +106,12 @@ export default {
     font-size: 5rem;
     font-family: 'Lobster';
     margin: 2rem 0;    
+  }
+  &__subtitle {
+    font-size: 1.5rem;
+  }
+  &__vignettes {
+    background-color: var(--vignette-service);
   }
   .vignette {
     width: 80%;
@@ -96,11 +129,15 @@ export default {
     }
     &__button {
       border-radius: 50rem;
-      border: 2px solid var(--kuroe-dark-blue);
-      color: var(--kuroe-dark-blue);
+      border: 2px solid var(--font-grey);
+      color: #FFF;
       font-weight: bold;
-      padding: 0.5rem 2rem;
-      background-color: transparent;
+      padding: 0.7rem 2.2rem;
+      background-color: var(--font-grey);
+    }
+    &__button:hover {
+      border: 2px solid var(--kuroe-dark-blue);
+      background-color: var(--kuroe-dark-blue);
     }
     &__service {
       width: auto;
