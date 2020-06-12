@@ -31,6 +31,18 @@
       >
         Contact
       </router-link>
+
+      <router-link
+        class="navbar__link ml-auto navbar__icon"
+        to="/connexion"
+      >
+        <inline-svg
+          class="navbar__icon-svg"
+          :src="require('../../img/svg/log.svg').default"
+          :width="size" 
+          :height="size"
+        />
+      </router-link>
     </nav>
   </div>
 </template>
@@ -42,6 +54,11 @@ export default {
     id:  {
       type: String,
       default: 'ok'
+    }
+  },
+  data () {
+    return {
+      size: 25
     }
   }
 };
@@ -55,6 +72,9 @@ export default {
   &__logo {
     width: 9rem;
     margin: 1.5rem 2rem 1.5rem 4rem;
+  }
+  &__icon {
+    margin-right: 4rem;
   }
   &__link {
     margin: 0 1rem;

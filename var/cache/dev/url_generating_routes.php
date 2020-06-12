@@ -16,7 +16,12 @@ return [
     '_profiler_exception' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::body'], [], [['text', '/exception'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], []],
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::stylesheet'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], []],
     'api_contact_post' => [[], ['_controller' => 'App\\Controller\\ContactController::formulaireContact'], [], [['text', '/api/contact']], [], []],
-    'index' => [['vueRouting'], ['_controller' => 'App\\Controller\\IndexController::indexAction'], [], [['variable', '/', '[^/]++', 'vueRouting', true]], [], []],
+    'home' => [[], ['_controller' => 'App\\Controller\\IndexController::indexAction'], [], [['text', '/']], [], []],
+    'home_routing' => [['vueRouting'], ['_controller' => 'App\\Controller\\IndexController::indexAction'], [], [['variable', '/', '[^/]++', 'vueRouting', true]], [], []],
+    'app_registration' => [[], ['_controller' => 'App\\Controller\\SecurityController::createUserAction'], [], [['text', '/api/inscription']], [], []],
+    'app_login' => [[], ['_controller' => 'App\\Controller\\SecurityController::login'], [], [['text', '/api/login']], [], []],
+    'app_logout' => [[], ['_controller' => 'App\\Controller\\SecurityController::logout'], [], [['text', '/api/logout']], [], []],
     'api_all_services' => [[], ['_controller' => 'App\\Controller\\ServicesController::getAllServices'], [], [['text', '/api/services']], [], []],
     'api_services_post' => [[], ['_controller' => 'App\\Controller\\ServicesController::newServices'], [], [['text', '/api/services']], [], []],
+    'api_services_delete' => [['id'], ['_controller' => 'App\\Controller\\ServicesController::deleteService'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/api/services']], [], []],
 ];

@@ -7,7 +7,7 @@
       :height="size"
       :width="size"
     />
-    <h1 class="services__title">
+    <h1 class="services__title title">
       Services
     </h1>
 
@@ -16,8 +16,21 @@
         Retrouvez ci-dessous la liste de tout nos services
       </p>
     </div>
+    <router-link
+      v-if="getUser"
+      to="/ajouter-service"
+      class="services__add navbar__link"
+      title="Ajouter un service"
+    >
+      <inline-svg
+        class="service__add-svg"
+        :src="require('../../img/svg/plus.svg').default"
+        :width="30" 
+        :height="30"
+      />
+    </router-link>
     <template
-      v-for="service in services"
+      v-for="service in getServices"
     >
       <Vignettes
         :id="service.id"
@@ -31,6 +44,20 @@
           slot="footer"
           class="vignette__slot"
         >
+          <div
+            v-if="getUser"
+            class="vignette__trash"
+            @click="deleteService(service.id)"
+          >
+            <inline-svg
+              class="vignette__trash-svg"
+              :src="require('../../img/svg/trash.svg').default"
+              :width="20" 
+              :height="20"
+              color="red"
+            />
+          </div>
+          
           <button
             class="vignette__button"
             @click="goTo(service.id)"
@@ -45,7 +72,7 @@
 
 <script>
 import Vignettes from '../components/Vignettes.vue'
-import { getAllServices } from '../services/api'
+import { getAllServices, deleteService } from '../services/api'
 import Loading from "vue-loading-overlay";
 import 'vue-loading-overlay/dist/vue-loading.css';
 import { mapActions, mapGetters } from 'vuex'
@@ -66,8 +93,15 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'getServices'
+      'getServices',
+      'getUser'
     ])
+  },
+  watch: {
+    getServices () {
+      this.services = [...this.getServices]
+      this.isLoading = false
+    }
   },
   async created () {
     if (this.getServices) {
@@ -88,11 +122,25 @@ export default {
   },
   methods: {
     ...mapActions([
-      'setServices'
+      'setServices',
+      'updateService'
     ]),
     goTo (route) {
       this.$router.push({path: '/services/mono-service', query: {id: route}})
-    }
+    },
+    async deleteService (id) {
+      if (window.confirm("Voulez vous supprimer ce service ?")) {
+        this.isLoading = true
+        try {
+          await deleteService(id)
+          this.updateService()
+        } catch (e) {
+          console.error(e)
+          this.isLoading = false
+        }
+      }
+
+    },
   }
 };
 </script>
@@ -102,13 +150,12 @@ export default {
 .services {
   margin: 5rem auto;
   text-align: center;
-  &__title {
-    font-size: 5rem;
-    font-family: 'Lobster';
-    margin: 2rem 0;    
-  }
   &__subtitle {
     font-size: 1.5rem;
+  }
+  &__add {
+    margin: auto;
+    width: 5rem;
   }
   &__vignettes {
     background-color: var(--vignette-service);
@@ -141,6 +188,12 @@ export default {
     }
     &__service {
       width: auto;
+    }
+    &__trash {
+      position: relative;
+      top: -9rem;
+      left: 8rem;
+      cursor: pointer;
     }
   }
 }

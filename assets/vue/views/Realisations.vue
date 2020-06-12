@@ -1,7 +1,7 @@
 <template>
   <div class="realisation">
-    <h2 class="realisation__title">
-      Realisations
+    <h2 class="realisation__title title">
+      Réalisations
     </h2>
 
     <div>
@@ -19,7 +19,6 @@
           :src="require(`../../img/portfolio/${photo}.jpg`).default"
           class="realisation__img"
           alt=""
-          @click="goTo(`../../img/portfolio/${photo}.jpg`)"
         >
       </div>
     </div>
@@ -43,11 +42,6 @@ export default {
         'IMG_08'
       ]
     }
-  },
-  methods: {   
-    goTo (route) {
-      window.open(route, '_blank')
-    }
   }
 };
 </script>
@@ -57,11 +51,6 @@ export default {
   text-align: center;
   max-width: 140rem;
   margin: 2rem auto;
-  &__title {
-    font-family: 'Lobster';
-    font-size: 5rem;
-    margin: 2rem 0;
-  }
   &__subtitle {
       font-size: 1.5rem;
   }

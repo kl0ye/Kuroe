@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="home__services">
-      <h2 class="home__title">
+      <h2 class="home__title title">
         Nos Services
       </h2>
     </div>
@@ -51,13 +51,13 @@
       </carousel>
     </div>
     <div class="home__about-us">
-      <h2 class="home__title">
+      <h2 class="home__title title">
         Qui sommes nous ?
       </h2>
       <DescriptifEntreprise />
     </div>
     <div class="home__instagram">
-      <h2 class="home__title">
+      <h2 class="home__title title">
         Quelques réalisations
       </h2>
       <div class="home__instagram-feed">
@@ -96,7 +96,6 @@ export default {
     Slide,
     Loading,
     DescriptifEntreprise,
-    // InstaFrame,
     Hexagone
   },
   data () {
@@ -117,7 +116,11 @@ export default {
         {name: 'IMG_03', url:'https://www.instagram.com/p/B_sM4iVnbto/'},
         {name: 'IMG_04', url:'https://www.instagram.com/p/B_sM5SHnuCM/'},
         {name: 'IMG_05', url:'https://www.instagram.com/p/B_sM8PXnXxR/'},
-        {name: 'IMG_06', url:'https://www.instagram.com/p/B_sM-5Snl2k/'}
+        {name: 'IMG_06', url:'https://www.instagram.com/p/B_sM-5Snl2k/'},
+        {name: 'IMG_07', url:'https://www.instagram.com/p/CAfiYsMH2D-/'},
+        {name: 'IMG_08', url:'https://www.instagram.com/p/CAfigBSHygz/'},
+        {name: 'IMG_09', url:'https://www.instagram.com/p/CAfjnb6n6hn/'},
+        {name: 'IMG_10', url:'https://www.instagram.com/p/CAfjt5onA9G/'}
       ]
     }
   },
@@ -142,7 +145,6 @@ export default {
         console.error(e)
       }
     }
-    console.log('route', this.$route)
   },
   methods: {
     ...mapActions([
@@ -155,12 +157,6 @@ export default {
 @import "../../styles/variables.css";
 
 .home {
-  &__title {
-    font-size: 5rem;
-    font-family: 'Lobster';
-    text-align: center;
-    margin: 2rem 0;
-  }
   &__header {
     width: 100%;
     overflow: hidden;
@@ -195,7 +191,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    max-width: 119rem;
+    max-width: 170rem;
     margin: 5rem auto;
   }
   .lightwidget--grid {

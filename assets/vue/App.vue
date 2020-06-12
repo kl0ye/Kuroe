@@ -9,6 +9,7 @@
 <script>
 import Navbar from './components/Navbar.vue'
 import Footer from './components/Footer.vue'
+import { mapActions } from 'vuex'
 
 export default {
   name: "App",
@@ -21,6 +22,19 @@ export default {
       idNavbar: 'navbar'
     }
   },
+  created () {
+    this.checkConnexion()
+  },
+  methods: {
+    ...mapActions([
+      'setUser'
+    ]),
+    async checkConnexion () {
+      let cookie = localStorage.getItem('CONNEXION')
+      console.log('cookie', cookie)
+      if (cookie) this.setUser(cookie)
+    }
+  }
 }
 </script>
 <style lang="scss">

@@ -32,4 +32,16 @@ class ServicesController extends AbstractController
         $manager->flush();
         return $this->json('Add New Services', 201, []);
     }
+
+    /**
+     * @Route("/api/services/{id}", name="api_services_delete", methods={"DELETE"})
+     */
+    public function deleteService(Services $services, ServicesRepository $repository, EntityManagerInterface $manager)
+    {
+        dump($services);
+        $manager->remove($services);
+        $manager->flush();
+        return $this->json('Delete Services', 201, []);
+    }
+
 }
