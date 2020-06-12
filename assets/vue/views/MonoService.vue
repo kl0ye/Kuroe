@@ -2,9 +2,16 @@
   <div class="service row">
     <div class="service__contain-img col-6">
       <img
+        v-if="img"
         :src="require(`../../img/${myService.title}.jpg`).default"
         class="service__img"
         alt="" 
+      > 
+      <img
+        v-else
+        :src="require(`../../img/default.jpg`).default"
+        class="service__img"
+        alt=""
       >
     </div>
     <div class="service__details col-4">
@@ -42,7 +49,8 @@ export default {
   data () {
     return {
       services: [],
-      myService: {}
+      myService: {},
+      img: false
     }
   },
   computed: {
@@ -55,7 +63,13 @@ export default {
     this.services = [...this.getServices]
     this.myService = this.services.find(e => e.id === id)
   },
+  mounted () {
+    this.imgNameCheck()
+  },
   methods: {
+    imgNameCheck () {
+      if (`../../img/${name}.jpg`) this.img = true
+    },
     goTo (route) {
       this.$router.push(route)
     }

@@ -311,6 +311,72 @@
         ]
     },
     {
+        "name": "doctrine/data-fixtures",
+        "version": "1.4.3",
+        "version_normalized": "1.4.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/doctrine/data-fixtures.git",
+            "reference": "7ebac50901eb4516816ac39100dba1759d843943"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/doctrine/data-fixtures/zipball/7ebac50901eb4516816ac39100dba1759d843943",
+            "reference": "7ebac50901eb4516816ac39100dba1759d843943",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/common": "^2.11",
+            "doctrine/persistence": "^1.3.3",
+            "php": "^7.2 || ^8.0"
+        },
+        "conflict": {
+            "doctrine/phpcr-odm": "<1.3.0"
+        },
+        "require-dev": {
+            "alcaeus/mongo-php-adapter": "^1.1",
+            "doctrine/coding-standard": "^6.0",
+            "doctrine/dbal": "^2.5.4",
+            "doctrine/mongodb-odm": "^1.3.0",
+            "doctrine/orm": "^2.7.0",
+            "phpunit/phpunit": "^7.0"
+        },
+        "suggest": {
+            "alcaeus/mongo-php-adapter": "For using MongoDB ODM with PHP 7",
+            "doctrine/mongodb-odm": "For loading MongoDB ODM fixtures",
+            "doctrine/orm": "For loading ORM fixtures",
+            "doctrine/phpcr-odm": "For loading PHPCR ODM fixtures"
+        },
+        "time": "2020-05-25T19:45:03+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.4.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Doctrine\\Common\\DataFixtures\\": "lib/Doctrine/Common/DataFixtures"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jonathan Wage",
+                "email": "jonwage@gmail.com"
+            }
+        ],
+        "description": "Data Fixtures for all Doctrine Object Managers",
+        "homepage": "http://www.doctrine-project.org",
+        "keywords": [
+            "database"
+        ]
+    },
+    {
         "name": "doctrine/dbal",
         "version": "v2.10.1",
         "version_normalized": "2.10.1.0",
@@ -495,6 +561,76 @@
             "database",
             "dbal",
             "orm",
+            "persistence"
+        ]
+    },
+    {
+        "name": "doctrine/doctrine-fixtures-bundle",
+        "version": "3.3.1",
+        "version_normalized": "3.3.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/doctrine/DoctrineFixturesBundle.git",
+            "reference": "39defca57ee0949e1475c46177b30b6d1b732e8f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/doctrine/DoctrineFixturesBundle/zipball/39defca57ee0949e1475c46177b30b6d1b732e8f",
+            "reference": "39defca57ee0949e1475c46177b30b6d1b732e8f",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/data-fixtures": "^1.3",
+            "doctrine/doctrine-bundle": "^1.11|^2.0",
+            "doctrine/orm": "^2.6.0",
+            "doctrine/persistence": "^1.3",
+            "php": "^7.1",
+            "symfony/config": "^3.4|^4.3|^5.0",
+            "symfony/console": "^3.4|^4.3|^5.0",
+            "symfony/dependency-injection": "^3.4|^4.3|^5.0",
+            "symfony/doctrine-bridge": "^3.4|^4.1|^5.0",
+            "symfony/http-kernel": "^3.4|^4.3|^5.0"
+        },
+        "require-dev": {
+            "doctrine/coding-standard": "^6.0",
+            "phpunit/phpunit": "^7.4",
+            "symfony/phpunit-bridge": "^4.1|^5.0"
+        },
+        "time": "2020-04-02T16:40:37+00:00",
+        "type": "symfony-bundle",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.3.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Doctrine\\Bundle\\FixturesBundle\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Doctrine Project",
+                "homepage": "http://www.doctrine-project.org"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "http://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony DoctrineFixturesBundle",
+        "homepage": "http://www.doctrine-project.org",
+        "keywords": [
+            "Fixture",
             "persistence"
         ]
     },
@@ -4244,23 +4380,23 @@
     },
     {
         "name": "symfony/maker-bundle",
-        "version": "v1.14.3",
-        "version_normalized": "1.14.3.0",
+        "version": "v1.18.0",
+        "version_normalized": "1.18.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/maker-bundle.git",
-            "reference": "c864e7f9b8d1e1f5f60acc3beda11299f637aded"
+            "reference": "b38c75be880b152ab55cef6cd52bf882d2b6518e"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/maker-bundle/zipball/c864e7f9b8d1e1f5f60acc3beda11299f637aded",
-            "reference": "c864e7f9b8d1e1f5f60acc3beda11299f637aded",
+            "url": "https://api.github.com/repos/symfony/maker-bundle/zipball/b38c75be880b152ab55cef6cd52bf882d2b6518e",
+            "reference": "b38c75be880b152ab55cef6cd52bf882d2b6518e",
             "shasum": ""
         },
         "require": {
             "doctrine/inflector": "^1.2",
             "nikic/php-parser": "^4.0",
-            "php": "^7.0.8",
+            "php": "^7.1.3",
             "symfony/config": "^3.4|^4.0|^5.0",
             "symfony/console": "^3.4|^4.0|^5.0",
             "symfony/dependency-injection": "^3.4|^4.0|^5.0",
@@ -4280,7 +4416,7 @@
             "symfony/security-core": "^3.4|^4.0|^5.0",
             "symfony/yaml": "^3.4|^4.0|^5.0"
         },
-        "time": "2019-11-07T00:56:03+00:00",
+        "time": "2020-05-15T18:51:23+00:00",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -5400,17 +5536,17 @@
     },
     {
         "name": "symfony/security-bundle",
-        "version": "v5.0.4",
-        "version_normalized": "5.0.4.0",
+        "version": "v5.0.8",
+        "version_normalized": "5.0.8.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/security-bundle.git",
-            "reference": "4e3c9cb554053e2b5b56c07b0a22492c2f1be195"
+            "reference": "b26fa15f2f748430112731f51f2c3c70fc6bbe1a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/security-bundle/zipball/4e3c9cb554053e2b5b56c07b0a22492c2f1be195",
-            "reference": "4e3c9cb554053e2b5b56c07b0a22492c2f1be195",
+            "url": "https://api.github.com/repos/symfony/security-bundle/zipball/b26fa15f2f748430112731f51f2c3c70fc6bbe1a",
+            "reference": "b26fa15f2f748430112731f51f2c3c70fc6bbe1a",
             "shasum": ""
         },
         "require": {
@@ -5422,7 +5558,7 @@
             "symfony/security-core": "^4.4|^5.0",
             "symfony/security-csrf": "^4.4|^5.0",
             "symfony/security-guard": "^4.4|^5.0",
-            "symfony/security-http": "^4.4.3|^5.0.3"
+            "symfony/security-http": "^4.4.5|^5.0.5"
         },
         "conflict": {
             "symfony/browser-kit": "<4.4",
@@ -5450,7 +5586,7 @@
             "symfony/yaml": "^4.4|^5.0",
             "twig/twig": "^2.10|^3.0"
         },
-        "time": "2020-01-31T09:13:47+00:00",
+        "time": "2020-04-22T00:36:07+00:00",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {

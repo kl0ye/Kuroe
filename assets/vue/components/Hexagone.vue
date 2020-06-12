@@ -59,11 +59,11 @@ export default {
 @import "../../styles/variables.css";
 .hexagone {
     clip-path: polygon(33.33% 0%, 66.66% 0%, 100% 33.33%, 100% 66.66%, 66.66% 100%, 33.33% 100%, 0 66.66%, 0 33.33%);
-    margin: 2rem 0;
+    margin: 2rem;
     position: relative;
     &__img {
-        width: 30rem;
-        transition: transform 2s;
+      width: 30rem;
+      transition: transform 2s;
     }
     &__svg-insta {
         position: absolute;

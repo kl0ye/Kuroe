@@ -14,6 +14,10 @@ return [
         '/_profiler/phpinfo' => [[['_route' => '_profiler_phpinfo', '_controller' => 'web_profiler.controller.profiler::phpinfoAction'], null, null, null, false, false, null]],
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
         '/api/contact' => [[['_route' => 'api_contact_post', '_controller' => 'App\\Controller\\ContactController::formulaireContact'], null, ['POST' => 0], null, false, false, null]],
+        '/' => [[['_route' => 'home', '_controller' => 'App\\Controller\\IndexController::indexAction'], null, null, null, false, false, null]],
+        '/api/inscription' => [[['_route' => 'app_registration', '_controller' => 'App\\Controller\\SecurityController::createUserAction'], null, null, null, false, false, null]],
+        '/api/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
+        '/api/logout' => [[['_route' => 'app_logout', '_controller' => 'App\\Controller\\SecurityController::logout'], null, null, null, false, false, null]],
         '/api/services' => [
             [['_route' => 'api_all_services', '_controller' => 'App\\Controller\\ServicesController::getAllServices'], null, ['GET' => 0], null, false, false, null],
             [['_route' => 'api_services_post', '_controller' => 'App\\Controller\\ServicesController::newServices'], null, ['POST' => 0], null, false, false, null],
@@ -37,6 +41,7 @@ return [
                     .')'
                 .')'
                 .'|/([^/]++)(*:178)'
+                .'|/api/services/([^/]++)(*:208)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -47,8 +52,9 @@ return [
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        178 => [
-            [['_route' => 'index', '_controller' => 'App\\Controller\\IndexController::indexAction'], ['vueRouting'], null, null, false, true, null],
+        178 => [[['_route' => 'home_routing', '_controller' => 'App\\Controller\\IndexController::indexAction'], ['vueRouting'], null, null, false, true, null]],
+        208 => [
+            [['_route' => 'api_services_delete', '_controller' => 'App\\Controller\\ServicesController::deleteService'], ['id'], ['DELETE' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

@@ -46,9 +46,13 @@ class __TwigTemplate_bca6ca9917be6c874458db536bb2b3ba2a9f6661c66b4a3540aa5ae2b74
     <meta charset=\"UTF-8\">
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, shrink-to-fit=no\">
     <title>Kuroe</title>
+    <link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"";
+        // line 7
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("favicon.png"), "html", null, true);
+        echo "\">
     <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\" integrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\">
     ";
-        // line 8
+        // line 9
         echo $this->extensions['Symfony\WebpackEncoreBundle\Twig\EntryFilesTwigExtension']->renderWebpackLinkTags("app");
         echo "
 </head>
@@ -58,7 +62,7 @@ class __TwigTemplate_bca6ca9917be6c874458db536bb2b3ba2a9f6661c66b4a3540aa5ae2b74
     <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js\" integrity=\"sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1\" crossorigin=\"anonymous\"></script>
     <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js\" integrity=\"sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM\" crossorigin=\"anonymous\"></script>
     ";
-        // line 15
+        // line 16
         echo $this->extensions['Symfony\WebpackEncoreBundle\Twig\EntryFilesTwigExtension']->renderWebpackScriptTags("app");
         echo "
 </body>
@@ -83,7 +87,7 @@ class __TwigTemplate_bca6ca9917be6c874458db536bb2b3ba2a9f6661c66b4a3540aa5ae2b74
 
     public function getDebugInfo()
     {
-        return array (  62 => 15,  52 => 8,  43 => 1,);
+        return array (  66 => 16,  56 => 9,  51 => 7,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -94,6 +98,7 @@ class __TwigTemplate_bca6ca9917be6c874458db536bb2b3ba2a9f6661c66b4a3540aa5ae2b74
     <meta charset=\"UTF-8\">
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, shrink-to-fit=no\">
     <title>Kuroe</title>
+    <link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"{{ asset('favicon.png') }}\">
     <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\" integrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\">
     {{ encore_entry_link_tags('app') }}
 </head>

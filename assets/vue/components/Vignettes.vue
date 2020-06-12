@@ -1,7 +1,16 @@
 <template>
   <div class="vignette">
     <img
+      v-if="img"
       :src="require(`../../img/${name}.jpg`).default"
+      class="vignette__img"
+      :class="{ 'vignette__cursor' : imgClick }"
+      alt=""
+      @click="goTo(id)"
+    >
+    <img
+      v-else
+      :src="require(`../../img/default.jpg`).default"
       class="vignette__img"
       :class="{ 'vignette__cursor' : imgClick }"
       alt=""
@@ -50,7 +59,18 @@ export default {
       default: false
     }
   },
-  methods: {   
+  data () {
+    return {
+      img: false
+    }
+  },
+  mounted () {
+    this.imgNameCheck()
+  },
+  methods: {
+    imgNameCheck () {
+      if (`../../img/${name}.jpg`) this.img = true
+    },
     goTo (route) {
       if (this.imgClick) {
         this.$router.push({path: '/services/mono-service', query: {id: route}})

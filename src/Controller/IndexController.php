@@ -15,7 +15,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 final class IndexController extends AbstractController
 {
     /**
-     * @Route("/{vueRouting}", name="index")
+     * @Route("/", name="home")
+     * @Route("/{vueRouting}", name="home_routing")
      * @return Response
      */
     public function indexAction(EntityManagerInterface $manager, ServicesRepository $repo): Response
