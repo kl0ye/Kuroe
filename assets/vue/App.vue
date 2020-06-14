@@ -27,12 +27,13 @@ export default {
   },
   methods: {
     ...mapActions([
-      'setUser'
+      'setIsConnect'
     ]),
     async checkConnexion () {
-      let cookie = localStorage.getItem('CONNEXION')
-      console.log('cookie', cookie)
-      if (cookie) this.setUser(cookie)
+      let cookie = document.cookie
+      if (cookie.split(';').some((item) => item.trim().startsWith('PHPSESSID='))) {
+        this.setIsConnect(true)
+      }
     }
   }
 }

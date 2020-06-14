@@ -64,6 +64,9 @@ export default {
     &__img {
       width: 30rem;
       transition: transform 2s;
+      @media(max-width: 576px){ 
+        width: 25rem;
+      }
     }
     &__svg-insta {
         position: absolute;

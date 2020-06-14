@@ -8,7 +8,7 @@
       :width="size"
     />
     <div
-      v-if="!getUser"
+      v-if="!getIsConnect"
       class="login"
     >
       <h2 class="title">
@@ -154,7 +154,7 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'getUser'
+      'getIsConnect'
     ]),
     isValidForm () {
       return (!this.$v.model.email.$invalid && !this.$v.model.password.$invalid)
@@ -168,8 +168,8 @@ export default {
   },
   methods: {
     ...mapActions([
-      'setUser',
-      'deleteUser'
+      'setIsConnect',
+      'deleteIsConnect'
     ]),
     clearForm () {
       this.model = {
@@ -185,7 +185,7 @@ export default {
         let form = new FormData(document.querySelector('.login__form'))
         try {
           await auth(form)
-          this.setUser(this.model.email)
+          this.setIsConnect(true)
         } catch (e) {
           console.error(e)
           this.alertInvalid = true
@@ -199,7 +199,7 @@ export default {
     async logout () {
       this.isLoading = true
       await logout()
-      this.deleteUser()
+      this.deleteIsConnect()
       this.isLoading = false
     },
     goTo (route) {

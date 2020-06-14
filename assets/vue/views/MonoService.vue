@@ -1,6 +1,6 @@
 <template>
   <div class="service row">
-    <div class="service__contain-img col-6">
+    <div class="service__contain-img col-10 col-lg-6">
       <img
         v-if="img"
         :src="require(`../../img/${myService.title}.jpg`).default"
@@ -14,7 +14,7 @@
         alt=""
       >
     </div>
-    <div class="service__details col-4">
+    <div class="service__details col-10 col-lg-4">
       <h2 class="service__title">
         {{ myService.title }}
       </h2>
@@ -86,6 +86,9 @@ export default {
     overflow: hidden;
     display: flex;
     justify-content: center;
+    @media (max-width: 	960px) {
+      margin: auto;
+    }
   }
   &__img {
     width: 77.5rem;
@@ -93,6 +96,9 @@ export default {
   }
   &__details {
     margin-top: 3rem;
+    @media (max-width: 	960px) {
+      margin: auto;
+    }
   }
   &__title {
     font-family: 'Lobster';

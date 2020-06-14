@@ -10,11 +10,11 @@ export default {
       let payload = await getAllServices()
       commit('UPDATE_SERVICE', payload.data)
     },
-    setUser ({commit}, payload) {
-      commit('SET_USER', payload)
+    setIsConnect ({commit}, payload) {
+      commit('SET_IS_CONNECT', payload)
     },
-    deleteUser ({commit}) {
-      commit('DELETE_USER')
+    deleteIsConnect ({commit}) {
+      commit('DELETE_IS_CONNECT')
     }
   },
   mutations: {
@@ -24,21 +24,19 @@ export default {
     UPDATE_SERVICE (state, service) {
       Vue.set(state, 'Services', service)
     },
-    SET_USER (state, user) {
-      localStorage.setItem('CONNEXION', user);
-      Vue.set(state, 'User', user)
+    SET_IS_CONNECT (state, payload) {
+      Vue.set(state, 'isConnect', payload)
     },
-    DELETE_USER (state) {
-      Vue.set(state, 'User', null)
-      localStorage.removeItem('CONNEXION');
+    DELETE_IS_CONNECT (state) {
+      Vue.set(state, 'isConnect', false)
     }
   },
   getters: {
     getServices: state => state.Services ? state.Services : null,
-    getUser: state => state.User ? state.User : null
+    getIsConnect: state => state.isConnect ? state.isConnect : null
   },
   state: {
     Services: null,
-    User: null
+    isConnect: false
   }
 }

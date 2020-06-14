@@ -8,7 +8,7 @@
           target="_blank"
         >
           <inline-svg
-            class="footer__facebook"
+            class="footer__facebook footer__svg"
             :src="require('../../img/svg/facebook.svg').default"
             :width="size" 
             :height="size"
@@ -21,7 +21,7 @@
           target="_blank"
         >
           <inline-svg
-            class="footer__twitter"
+            class="footer__twitter footer__svg"
             :src="require('../../img/svg/twitter.svg').default"
             :width="size" 
             :height="size"
@@ -34,7 +34,7 @@
           target="_blank"
         >
           <inline-svg
-            class="footer__insta"
+            class="footer__insta footer__svg"
             :src="require('../../img/svg/instagram.svg').default"
             :width="size" 
             :height="size"
@@ -47,7 +47,7 @@
           target="_blank"
         >
           <inline-svg
-            class="footer__linkedin"
+            class="footer__linkedin footer__svg"
             :src="require('../../img/svg/linkedin.svg').default"
             :width="size" 
             :height="size"
@@ -60,7 +60,7 @@
           target="_blank"
         >
           <inline-svg
-            class="footer__youtube"
+            class="footer__youtube footer__svg"
             :src="require('../../img/svg/youtube.svg').default"
             :width="size" 
             :height="size"
@@ -90,24 +90,36 @@ export default {
 <style lang="scss">
 @import "../../styles/variables.css";
 .footer {
-    background-color: var(--bg-footer);
-    height: 25rem;
+  background-color: var(--bg-footer);
+  height: 25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__contenu {
+    width: 50%;
+  }
+  &__social-link {
+    margin-top: 2.5rem;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    &__contenu {
-      width: 50%;
-    }
-    &__social-link {
-      margin-top: 2.5rem;
-      display: flex;
-      justify-content: space-evenly;
+    justify-content: space-evenly;
+  }
+  &__text {
+    margin-top: 2.5rem;
+    margin-bottom: 0;
+    font-size: 1.5rem;
+    color: var(--bg-white);
+  }
+  @media(max-width: 576px){
+    &__svg {
+      width: 4rem;
+      height: 4rem;
     }
     &__text {
-      margin-top: 2.5rem;
-      margin-bottom: 0;
-      font-size: 1.5rem;
-      color: var(--bg-white);
+      font-size: 1.2rem;
     }
+    &__contenu {
+      width: 80%;
+    }
+  }
 }
 </style>

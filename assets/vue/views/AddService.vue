@@ -114,7 +114,7 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'getUser'
+      'getIsConnect'
     ]),
     isValidForm () {
       return (!this.$v.model.title.$invalid && !this.$v.model.description.$invalid)
@@ -127,7 +127,7 @@ export default {
     }
   },
   mounted () {
-    if (!this.getUser) {
+    if (!this.getIsConnect) {
       this.$router.push({path: '/'})
     }
   },

@@ -36,4 +36,9 @@ body {
     font-family: 'Lobster';
 	text-align: center;
 	margin: 2rem 0;
-  }
+}
+@media(max-width: 576px){ 
+	.title {
+		font-size: 4rem;
+	}
+}

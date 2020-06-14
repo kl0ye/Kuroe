@@ -89,12 +89,19 @@ export default {
   border-radius: 0.5rem;
   padding: 2.5rem 2rem;
   margin: 2rem;
+  @media(max-width:768px) {
+    width: 29rem;
+  }
   &__img {
     width: 31rem;
     height: 20em;
     text-align: center;
     border-radius: 0.2rem;
     filter: grayscale(1);
+    @media(max-width:768px) {
+      width: 25rem;
+      height: 19rem;
+    }
   }
   &__cursor {
     cursor: pointer;

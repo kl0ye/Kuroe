@@ -17,7 +17,7 @@
       </p>
     </div>
     <router-link
-      v-if="getUser"
+      v-if="getIsConnect"
       to="/ajouter-service"
       class="services__add navbar__link"
       title="Ajouter un service"
@@ -30,11 +30,11 @@
       />
     </router-link>
     <template
-      v-for="service in getServices"
+      v-for="(service, index) in getServices"
     >
       <Vignettes
         :id="service.id"
-        :key="service.title"
+        :key="`${service.title}-${index}`"
         :name="service.title"
         :description="service.description"
         :price="service.price"
@@ -45,7 +45,7 @@
           class="vignette__slot"
         >
           <div
-            v-if="getUser"
+            v-if="getIsConnect"
             class="vignette__trash"
             @click="deleteService(service.id)"
           >
@@ -94,7 +94,7 @@ export default {
   computed: {
     ...mapGetters([
       'getServices',
-      'getUser'
+      'getIsConnect'
     ])
   },
   watch: {
@@ -159,6 +159,12 @@ export default {
   }
   &__vignettes {
     background-color: var(--vignette-service);
+    @media(max-width:992px){
+      .vignette__img {
+        visibility: hidden;
+        width: 5rem;
+      }
+    }
   }
   .vignette {
     width: 80%;
@@ -166,9 +172,25 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media(max-width: 450px) {
+      justify-content: center;
+      flex-direction: column;
+      &__img {
+        display: none;
+      }
+      &__details {
+        margin: 0;
+      }
+      &__service-title {
+        font-size: 3rem;
+      }
+    }
     &__details {
       display: block;
       margin-left: -15rem;
+      @media(max-width: 768px) { 
+        margin-left: -5rem;
+      }
     }
     &__slot {
       position: relative;
@@ -194,6 +216,12 @@ export default {
       top: -9rem;
       left: 8rem;
       cursor: pointer;
+      @media(max-width: 768px) { 
+        top: -7rem
+      }
+      @media(max-width: 450px) {
+        left: 11rem;
+      }
     }
   }
 }

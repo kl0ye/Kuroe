@@ -6,6 +6,7 @@
     <nav class="navbar navbar-expand-lg navbar--bg">
       <router-link
         to="/home"
+        class="navbar__home-logo"
       >
         <img
           :src="require('../../img/KuroeLogo.png').default"
@@ -86,6 +87,19 @@ export default {
   &__link:hover {
     text-decoration: none;
     color: var(--kuroe-light-blue);
+  }
+  @media (max-width: 490px) {
+    &__link {
+      font-size: 1.7rem;
+    }
+    &__icon-svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+    &__home-logo {
+      width: 100%;
+      text-align: center;
+    }
   }
 }
 </style>

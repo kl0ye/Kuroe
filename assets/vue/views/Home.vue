@@ -36,8 +36,8 @@
         :pagination-active="dotColorActive"
       >
         <slide 
-          v-for="service in services"
-          :key="service.title"
+          v-for="(service, index) in services"
+          :key="`${service.title}-${index}`"
         >
           <Vignettes
             :id="service.id"
@@ -102,7 +102,9 @@ export default {
     return {
       services: [],
       items: [
-        [0, 3],
+        [0, 1],
+        [576, 2],
+        [768, 3],
         [1570, 4]
       ],
       isLoading: true,
@@ -168,13 +170,22 @@ export default {
       width: 100%;
       margin-top: -10rem;
       padding-left: 5rem;
+      @media(max-width: 576px){ 
+        padding-left: 2rem;
+      }
     }
     &-title {
       font-family: 'Lobster';
       font-size: 5.5rem;
+      @media(max-width: 576px){ 
+        font-size: 4.2rem
+      }
     }
     &-text {
       font-size: 2rem;
+      @media(max-width: 576px){ 
+        font-size: 1.5rem;
+      }
     }
   }
   &__services-vignettes {
