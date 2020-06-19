@@ -5,12 +5,10 @@ import router from "./router";
 import store from "./store/store.js";
 import InlineSvg from 'vue-inline-svg';
 import Vuelidate from 'vuelidate';
-import cookies from 'browser-cookies';
 
 Vue.use(Vuex)
 Vue.component('inline-svg', InlineSvg);
 Vue.use(Vuelidate)
-Vue.use(cookies)
 
 new Vue({
   components: { App },
