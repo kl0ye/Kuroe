@@ -38,7 +38,6 @@ class ServicesController extends AbstractController
      */
     public function deleteService(Services $services, ServicesRepository $repository, EntityManagerInterface $manager)
     {
-        dump($services);
         $manager->remove($services);
         $manager->flush();
         return $this->json('Delete Services', 201, []);

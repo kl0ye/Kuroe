@@ -10,7 +10,5 @@ class ContactManager {
     public function mapper($contact)
     {
         $contact = new Contact;
-        dump($contact);
-        
     }
 }

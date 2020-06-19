@@ -42,16 +42,12 @@ class LoginAuthentificatorAuthenticator extends AbstractFormLoginAuthenticator i
 
     public function supports(Request $request)
     {
-       
-        dump('supportd');
         return self::LOGIN_ROUTE === $request->attributes->get('_route')
             && $request->isMethod('POST');
     }
 
     public function getCredentials(Request $request)
     {  
-       
-        dump('credentials');
         $credentials = [
             'email' => $request->request->get('email'),
             'password' => $request->request->get('password'),
