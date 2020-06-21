@@ -178,13 +178,13 @@ export default {
       font-family: 'Lobster';
       font-size: 5.5rem;
       @media(max-width: 576px){ 
-        font-size: 4.2rem
+        font-size: 3.5rem
       }
     }
     &-text {
       font-size: 2rem;
       @media(max-width: 576px){ 
-        font-size: 1.5rem;
+        font-size: 1.2rem;
       }
     }
   }

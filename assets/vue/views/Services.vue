@@ -175,11 +175,9 @@ export default {
     @media(max-width: 450px) {
       justify-content: center;
       flex-direction: column;
+      width: 100%;
       &__img {
         display: none;
-      }
-      &__details {
-        margin: 0;
       }
       &__service-title {
         font-size: 3rem;
@@ -191,10 +189,16 @@ export default {
       @media(max-width: 768px) { 
         margin-left: -5rem;
       }
+      @media(max-width: 450px) {
+        margin-left: 0;
+      }
     }
     &__slot {
       position: relative;
       margin-right: 5rem;
+      @media(max-width: 450px) {
+        margin-right: 0;
+      }
     }
     &__button {
       border-radius: 50rem;

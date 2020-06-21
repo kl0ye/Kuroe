@@ -37,7 +37,7 @@
       <p> {{ messageAlert }} </p>
     </div>
     <div class="form-row justify-content-center">
-      <div class="form-group mr-5">
+      <div class="form-group mr-sm-5">
         <div class="new__form-input ">
           <label for="title" />
           <input
@@ -61,7 +61,7 @@
           >
         </div>
       </div>
-      <div class="form-group ml-5 new__description">
+      <div class="form-group ml-sm-5 new__description">
         <label for="description" />
         <textarea
           id="description"
@@ -195,6 +195,9 @@ export default {
     padding: 0.5rem 1rem;
     &--description {
       width: 30rem;
+      @media(max-width: 550px) {
+        width: 22rem;
+      }
     }
   }
 

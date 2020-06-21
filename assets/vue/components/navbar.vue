@@ -34,7 +34,7 @@
       </router-link>
 
       <router-link
-        class="navbar__link ml-auto navbar__icon"
+        class="navbar__link ml-sm-auto navbar__icon"
         to="/connexion"
       >
         <inline-svg
