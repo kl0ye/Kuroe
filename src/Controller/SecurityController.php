@@ -41,7 +41,7 @@ class SecurityController extends AbstractController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->json('login OK', 200);
+        return $this->json('Bad Request', 400);
     }
 
     /**

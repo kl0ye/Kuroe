@@ -5,8 +5,8 @@ namespace App\Controller;
 use App\Entity\Services;
 use App\Repository\ServicesRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,6 +23,7 @@ class ServicesController extends AbstractController
 
     /**
      * @Route("/api/services", name="api_services_post", methods={"POST"})
+     * @IsGranted("ROLE_USER")
      */
     public function newServices(Request $request, SerializerInterface $serializer,EntityManagerInterface $manager)
     {
@@ -35,6 +36,7 @@ class ServicesController extends AbstractController
 
     /**
      * @Route("/api/services/{id}", name="api_services_delete", methods={"DELETE"})
+     * @IsGranted("ROLE_USER")
      */
     public function deleteService(Services $services, ServicesRepository $repository, EntityManagerInterface $manager)
     {

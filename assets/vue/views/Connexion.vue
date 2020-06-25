@@ -178,9 +178,9 @@ export default {
       }
     },
     async sendForm (e) {
-      this.isLoading = true
-      if (this.alertInvalid) this.alertInvalid = false
       if (this.isValid) {
+        this.isLoading = true
+        if (this.alertInvalid) this.alertInvalid = false
         e.preventDefault()
         let form = new FormData(document.querySelector('.login__form'))
         try {
@@ -193,7 +193,9 @@ export default {
           this.clearForm()
           this.isLoading = false
         }
-
+      } else {
+        this.alertInvalid = true
+        e.preventDefault()
       }
     },
     async logout () {
