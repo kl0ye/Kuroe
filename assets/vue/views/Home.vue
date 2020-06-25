@@ -19,7 +19,7 @@
         </h2>
         <p class="home__header-subtitle">
           N'attendez plus, consultez nos tous services et<br>
-          prenez rendez-­vous directement en ligne !
+          prenez contact avec nous directement en ligne !
         </p>
       </div>
     </div>
@@ -191,6 +191,10 @@ export default {
   &__services-vignettes {
     .VueCarousel-slide {
       text-align: -webkit-center;
+    }
+    .vignette__service-text {
+      max-height: 7rem;
+      overflow: hidden;
     }
   }
   &__about-us {
