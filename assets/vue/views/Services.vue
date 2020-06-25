@@ -185,6 +185,7 @@ export default {
     }
     &__details {
       display: block;
+      height: auto;
       @media(max-width: 768px) { 
         margin-left: -5rem;
       }
