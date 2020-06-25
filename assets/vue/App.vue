@@ -31,7 +31,7 @@ export default {
     ]),
     async checkConnexion () {
       let cookie = document.cookie
-      if (cookie.split(';').some((item) => item.trim().startsWith('PHPSESSID='))) {
+      if (cookie.split(';').some((item) => item.trim().startsWith('PHPSESSID=')) && cookie.split(';').some((item) => item.trim().startsWith('LOGIN=true'))) {
         this.setIsConnect(true)
       }
     }

@@ -162,7 +162,6 @@ export default {
   },
   watch: {
     isValidForm (value) {
-      if (this.alertInvalid) { this.alertInvalid = false }
       this.isValid = value
     }
   },
@@ -177,6 +176,9 @@ export default {
         password: null
       }
     },
+    setCookieConnect (payload) {
+      document.cookie = `LOGIN=${payload}`;
+    },
     async sendForm (e) {
       if (this.isValid) {
         this.isLoading = true
@@ -186,6 +188,7 @@ export default {
         try {
           await auth(form)
           this.setIsConnect(true)
+          this.setCookieConnect(true)
         } catch (e) {
           console.error(e)
           this.alertInvalid = true
@@ -194,7 +197,6 @@ export default {
           this.isLoading = false
         }
       } else {
-        this.alertInvalid = true
         e.preventDefault()
       }
     },
@@ -202,6 +204,7 @@ export default {
       this.isLoading = true
       await logout()
       this.deleteIsConnect()
+      this.setCookieConnect(false)
       this.isLoading = false
     },
     goTo (route) {
