@@ -103,8 +103,8 @@ export default {
       services: [],
       items: [
         [0, 1],
-        [576, 2],
-        [768, 3],
+        [668, 2],
+        [1150, 3],
         [1570, 4]
       ],
       isLoading: true,
