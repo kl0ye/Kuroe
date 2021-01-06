@@ -31,7 +31,7 @@
     },
     "dependencies": {
         "acorn": "^7.1.1",
-        "axios": "^0.19.2",
+        "axios": "^0.21.1",
         "encore": "^0.0.30-beta",
         "minimist": "^1.2.5",
         "node-sass": "^4.13.1",
